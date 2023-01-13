@@ -7,3 +7,5 @@
 /src/MyRecipeApi/obj
 /src/MyRecipeDataAccess/obj
 /src/MyRecipeWebUI/obj
+/src/Hosts/MyRecipeApi/obj
+/src/Hosts/MyRecipeWebUI/obj
