@@ -13,3 +13,4 @@
 /src/.idea/.idea.MyRecipe/.idea
 /src/Infrastructure/MyRecipe.Infrastructure/obj
 /src/Infrastructure/MyRecipe.ComponentRegistrar/obj
+/src/Infrastructure/MyRecipe.Infrastructure/bin/Debug/net6.0
