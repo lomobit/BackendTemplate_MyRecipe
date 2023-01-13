@@ -10,3 +10,5 @@
 /src/Domain/MyRecipe.Domain/bin/
 /src/Hosts/MyRecipe.Api/bin/
 /src/Hosts/MyRecipe.WebUI/bin/
+/src/.idea/.idea.MyRecipe/.idea
+/src/Infrastructure/MyRecipe.Infrastructure/obj
