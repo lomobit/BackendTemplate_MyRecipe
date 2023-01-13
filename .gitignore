@@ -9,3 +9,6 @@
 /src/MyRecipeWebUI/obj
 /src/Hosts/MyRecipeApi/obj
 /src/Hosts/MyRecipeWebUI/obj
+/src/Domain/MyRecipe.Domain/obj
+/src/Hosts/MyRecipe.Api/obj
+/src/Hosts/MyRecipe.WebUI/obj

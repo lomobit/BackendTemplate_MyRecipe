@@ -1,4 +1,4 @@
-namespace MyRecipeWebUI.Models
+namespace MyRecipe.WebUI.Models
 {
     public class ErrorViewModel
     {

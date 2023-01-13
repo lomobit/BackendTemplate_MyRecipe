@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyRecipeWebUI.Models;
+using MyRecipe.WebUI.Models;
 using System.Diagnostics;
 
-namespace MyRecipeWebUI.Controllers
+namespace MyRecipe.WebUI.Controllers
 {
     public class HomeController : Controller
     {

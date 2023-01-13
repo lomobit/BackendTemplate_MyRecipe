@@ -1,4 +1,4 @@
-﻿namespace MyRecipeDataAccess
+﻿namespace MyRecipe.Domain
 {
     public class Class1
     {

@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["MyRecipeWebUI/MyRecipeWebUI.csproj", "MyRecipeWebUI/"]
-RUN dotnet restore "MyRecipeWebUI/MyRecipeWebUI.csproj"
+COPY ["MyRecipe.WebUI/MyRecipe.WebUI.csproj", "MyRecipe.WebUI/"]
+RUN dotnet restore "MyRecipe.WebUI/MyRecipe.WebUI.csproj"
 COPY . .
-WORKDIR "/src/MyRecipeWebUI"
-RUN dotnet build "MyRecipeWebUI.csproj" -c Release -o /app/build
+WORKDIR "/src/MyRecipe.WebUI"
+RUN dotnet build "MyRecipe.WebUI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MyRecipeWebUI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "MyRecipe.WebUI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MyRecipeWebUI.dll"]
+ENTRYPOINT ["dotnet", "MyRecipe.WebUI.dll"]
