@@ -4,11 +4,9 @@
 
 /.vs
 /src/.vs
-/src/MyRecipeApi/obj
-/src/MyRecipeDataAccess/obj
-/src/MyRecipeWebUI/obj
-/src/Hosts/MyRecipeApi/obj
-/src/Hosts/MyRecipeWebUI/obj
 /src/Domain/MyRecipe.Domain/obj
 /src/Hosts/MyRecipe.Api/obj
 /src/Hosts/MyRecipe.WebUI/obj
+/src/Domain/MyRecipe.Domain/bin/
+/src/Hosts/MyRecipe.Api/bin/
+/src/Hosts/MyRecipe.WebUI/bin/
