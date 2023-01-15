@@ -15,3 +15,5 @@
 /src/Infrastructure/MyRecipe.ComponentRegistrar/obj
 /src/Infrastructure/MyRecipe.Infrastructure/bin/Debug/net6.0
 /src/Infrastructure/MyRecipe.ComponentRegistrar/bin/Debug/net6.0
+/src/Infrastructure/MyRecipe.Migrator/bin/Debug/net6.0
+/src/Infrastructure/MyRecipe.Migrator/obj
