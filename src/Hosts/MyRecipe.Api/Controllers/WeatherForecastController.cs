@@ -13,24 +13,21 @@ namespace MyRecipe.Api.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly ILoggerFactory _loggerFactory;
+        private readonly MyRecipeDbContext _dbContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IConfiguration configuration, ILoggerFactory loggerFactory)
+        public WeatherForecastController(
+            ILogger<WeatherForecastController> logger, 
+            MyRecipeDbContext dbContext)
         {
             _logger = logger;
-            _configuration = configuration;
-            _loggerFactory = loggerFactory;
+            _dbContext = dbContext;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            using (var db = new MyRecipeDbContext(_configuration, _loggerFactory))
-            {
-                db.Ingredients.Add(new Domain.Ingredient { Name = "‗יצמ2" });
-                db.SaveChanges();
-            }
+            _dbContext.Ingredients.Add(new Domain.Ingredient { Name = "‗יצמ2" });
+            _dbContext.SaveChanges();
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
