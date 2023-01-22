@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+ï»¿using Microsoft.AspNetCore.Mvc;
 using MyRecipe.Infrastructure;
 
 namespace MyRecipe.Api.Controllers
@@ -26,7 +26,7 @@ namespace MyRecipe.Api.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _dbContext.Ingredients.Add(new Domain.Ingredient { Name = "ßéöî" });
+            _dbContext.Ingredients.Add(new Domain.Ingredient { Name = "Ð¯Ð¹Ñ†Ð¾" });
             _dbContext.SaveChanges();
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

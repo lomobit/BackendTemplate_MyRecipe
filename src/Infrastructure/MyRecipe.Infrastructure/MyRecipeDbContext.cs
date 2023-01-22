@@ -13,7 +13,7 @@ public class MyRecipeDbContext : DbContext
 
 
     public MyRecipeDbContext(DbContextOptions<MyRecipeDbContext> options) : base(options)
-	{
+    {
         // TODO: необходимо применять миграции до запуска приложения
         Database.Migrate();
     }
