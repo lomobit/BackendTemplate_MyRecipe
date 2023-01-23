@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MyRecipe.Domain
 {
     public class Dish
@@ -17,5 +12,10 @@ namespace MyRecipe.Domain
         /// Наименование блюда.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// На какое количество человек
+        /// </summary>
+        public int NumberOfPersons { get; set; }
     }
 }

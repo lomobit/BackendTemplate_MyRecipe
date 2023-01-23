@@ -11,5 +11,10 @@
         /// Наименование ингридиента.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Описание расписания приёмов пищи.
+        /// </summary>
+        public string? Description { get; set; }
     }
 }

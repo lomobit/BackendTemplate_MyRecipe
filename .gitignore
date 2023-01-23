@@ -13,7 +13,9 @@
 /src/.idea/.idea.MyRecipe/.idea
 /src/Infrastructure/MyRecipe.Infrastructure/obj
 /src/Infrastructure/MyRecipe.ComponentRegistrar/obj
-/src/Infrastructure/MyRecipe.Infrastructure/bin/Debug/net6.0
-/src/Infrastructure/MyRecipe.ComponentRegistrar/bin/Debug/net6.0
-/src/Infrastructure/MyRecipe.Migrator/bin/Debug/net6.0
+/src/Infrastructure/MyRecipe.Infrastructure/bin
+/src/Infrastructure/MyRecipe.ComponentRegistrar/bin
+/src/Infrastructure/MyRecipe.Migrator/bin
 /src/Infrastructure/MyRecipe.Migrator/obj
+/src/Contracts/MyRecipe.Contracts/obj
+/src/Contracts/MyRecipe.Contracts/bin

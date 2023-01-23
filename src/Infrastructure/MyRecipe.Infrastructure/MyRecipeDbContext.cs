@@ -10,6 +10,8 @@ public class MyRecipeDbContext : DbContext
     public DbSet<Dish> Dishes { get; set; }
     public DbSet<Okei> Okeis { get; set; }
     public DbSet<IngredientsForDish> IngredientsForDishes { get; set; }
+    public DbSet<Meal> Meals { get; set; }
+    public DbSet<MealSchedule> MealSchedules { get; set; }
 
 
     public MyRecipeDbContext(DbContextOptions<MyRecipeDbContext> options) : base(options)
@@ -24,5 +26,7 @@ public class MyRecipeDbContext : DbContext
         modelBuilder.ApplyConfiguration(new DishConfiguration());
         modelBuilder.ApplyConfiguration(new OkeiConfiguration());
         modelBuilder.ApplyConfiguration(new IngredientsForDishConfiguration());
+        modelBuilder.ApplyConfiguration(new MealConfiguration());
+        modelBuilder.ApplyConfiguration(new MealScheduleConfiguration());
     }
 }

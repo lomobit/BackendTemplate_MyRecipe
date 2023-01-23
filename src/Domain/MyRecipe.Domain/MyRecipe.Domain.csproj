@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\MyRecipe.Contracts\MyRecipe.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>
