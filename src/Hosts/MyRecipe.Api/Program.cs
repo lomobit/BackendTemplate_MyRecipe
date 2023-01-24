@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyRecipe.Infrastructure;
+
+// Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
+[assembly: ApiController]
 
 var builder = WebApplication.CreateBuilder(args);
 

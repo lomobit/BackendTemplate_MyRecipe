@@ -1,12 +1,8 @@
-﻿namespace MyRecipe.Domain
+﻿
+namespace MyRecipe.Contracts.Ingredient
 {
-    public class Ingredient
+    public class IngredientAddCommand
     {
-        /// <summary>
-        /// Идентификатор ингридиента.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Наименование ингридиента.
         /// </summary>

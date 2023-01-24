@@ -1,6 +1,7 @@
-﻿namespace MyRecipe.Domain
+﻿
+namespace MyRecipe.Contracts.Ingredient
 {
-    public class Ingredient
+    public class IngredientDto
     {
         /// <summary>
         /// Идентификатор ингридиента.
