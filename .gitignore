@@ -19,3 +19,5 @@
 /src/Infrastructure/MyRecipe.Migrator/obj
 /src/Contracts/MyRecipe.Contracts/obj
 /src/Contracts/MyRecipe.Contracts/bin
+/src/Application/MyRecipe.Handlers/bin
+/src/Application/MyRecipe.Handlers/obj

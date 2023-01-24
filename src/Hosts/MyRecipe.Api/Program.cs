@@ -1,6 +1,9 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyRecipe.Handlers;
 using MyRecipe.Infrastructure;
+using System.Reflection;
 
 // Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
 [assembly: ApiController]
@@ -10,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddMediatR(typeof(MediatREntrypoint).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -1,7 +1,10 @@
 ﻿
-namespace MyRecipe.Contracts.Ingredient
+using MediatR;
+using MyRecipe.Contracts.Ingredient;
+
+namespace MyRecipe.Handlers.Ingredient
 {
-    public class IngredientAddCommand
+    public class IngredientAddCommand : IRequest<IngredientDto>
     {
         /// <summary>
         /// Наименование ингридиента.
