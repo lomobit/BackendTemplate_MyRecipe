@@ -26,7 +26,7 @@ namespace MyRecipe.Api.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _dbContext.Ingredients.Add(new Domain.Ingredient { Name = "Яйцо2" });
+            _dbContext.Ingredients.Add(new Domain.Ingredient { Name = "Яйцо3" });
             _dbContext.SaveChanges();
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

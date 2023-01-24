@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\Infrastructure\MyRecipe.Infrastructure\MyRecipe.Infrastructure.csproj" />
   </ItemGroup>
 
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="xcopy &quot;..\..\Infrastructure\MyRecipe.Infrastructure\SqlScriptsForMigrations\*&quot; &quot;.\bin\$(Configuration)\$(TargetFramework)\SqlScriptsForMigrations\&quot; /e /f /h /k /y" />
+	</Target>
+
 </Project>
