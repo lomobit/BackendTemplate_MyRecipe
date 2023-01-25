@@ -25,3 +25,5 @@
 /src/Application/AppServices/obj
 /src/Infrastructure/MyRecipe.DataAccess/bin
 /src/Infrastructure/MyRecipe.DataAccess/obj
+/src/Common/MyRecipe.Common/obj
+/src/Common/MyRecipe.Common/bin

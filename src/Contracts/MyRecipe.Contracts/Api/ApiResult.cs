@@ -35,18 +35,6 @@ namespace MyRecipe.Contracts.Api
         /// <summary>
         /// Успешное выполнение операции.
         /// </summary>
-        /// <returns>Результат выполнения метода.</returns>
-        public static ApiResult<T> SuccessResult()
-        {
-            return new ApiResult<T>()
-            {
-                Success = true
-            };
-        }
-
-        /// <summary>
-        /// Успешное выполнение операции.
-        /// </summary>
         /// <param name="data">Данные.</param>
         /// <returns>Результат выполнения метода.</returns>
         public static ApiResult<T> SuccessResult(T? data)
@@ -62,9 +50,9 @@ namespace MyRecipe.Contracts.Api
         /// Успешное выполнение операции.
         /// </summary>
         /// <param name="data">Данные.</param>
-        /// <param name="message">Сообщение.</param>
+        /// <param name="messages">Сообщения.</param>
         /// <returns>Результат выполнения метода.</returns>
-        public static ApiResult<T> ErrorResult(T data, string? message = null)
+        public static ApiResult<T> ErrorResult(T? data, IDictionary<string, string>? messages)
         {
             var apiResult = new ApiResult<T>()
             {
@@ -72,13 +60,18 @@ namespace MyRecipe.Contracts.Api
                 Success = false,
             };
 
-            if (!string.IsNullOrEmpty(message))
+            if (messages == null)
+            {
+                return apiResult;
+            }
+
+            foreach (var message in messages)
             {
                 apiResult.Messages.Add(new ApiResultMessage()
                 {
-                    Value = message,
+                    Value = message.Value,
                     Type = ApiResultMessageType.Error,
-                    Key = "Error"
+                    Key = message.Key,
                 });
             }
 
