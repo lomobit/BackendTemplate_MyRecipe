@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyRecipe.Contracts.Api;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyRecipe.Api.Controllers.v1
@@ -13,9 +14,19 @@ namespace MyRecipe.Api.Controllers.v1
                 var result = await apiAction.Invoke();
                 return Success(result);
             }
+            catch (ValidationException ex)
+            {
+                return Error(
+                    default(string),
+                    StatusCodes.Status400BadRequest,
+                    ex.Data);
+            }
             catch (Exception ex) 
             {
-                return Error(new Dictionary<string, string> { { ex.GetType().Name, ex.Message } });
+                return Error(
+                    default(string),
+                    StatusCodes.Status500InternalServerError,
+                    ex.Data);
             }
         }
 
@@ -31,33 +42,14 @@ namespace MyRecipe.Api.Controllers.v1
         }
 
         /// <summary>
-        /// Успешное завершение вызова.
-        /// </summary>
-        /// <returns>Результат вызова API.</returns>
-        protected IActionResult Success()
-        {
-            return Ok(ApiResult<string>.SuccessResult(null));
-        }
-
-        /// <summary>
         /// Завершение вызова с ошибкой.
         /// </summary>
         /// <param name="data">Данные.</param>
         /// <param name="errors">Ошибки.</param>
         /// <returns>Результат вызова API.</returns>
-        protected IActionResult Error<T>(T? data, IDictionary<string, string> errors)
+        protected IActionResult Error<T>(T? data, int statusCode, IDictionary errors)
         {
-            return Ok(ApiResult<T>.ErrorResult(data, errors));
-        }
-
-        /// <summary>
-        /// Завершение вызова с ошибкой.
-        /// </summary>
-        /// <param name="errors">Ошибки.</param>
-        /// <returns>Результат вызова API.</returns>
-        protected IActionResult Error(IDictionary<string, string> errors)
-        {
-            return Ok(ApiResult<string>.ErrorResult(null, errors));
+            return StatusCode(statusCode, ApiResult<T>.ErrorResult(data, errors));
         }
     }
 }

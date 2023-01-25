@@ -1,5 +1,6 @@
 ﻿
 using MyRecipe.Contracts.Enums.Api;
+using System.Collections;
 
 namespace MyRecipe.Contracts.Api
 {
@@ -52,7 +53,7 @@ namespace MyRecipe.Contracts.Api
         /// <param name="data">Данные.</param>
         /// <param name="messages">Сообщения.</param>
         /// <returns>Результат выполнения метода.</returns>
-        public static ApiResult<T> ErrorResult(T? data, IDictionary<string, string>? messages)
+        public static ApiResult<T> ErrorResult(T? data, IDictionary? messages)
         {
             var apiResult = new ApiResult<T>()
             {
@@ -60,18 +61,19 @@ namespace MyRecipe.Contracts.Api
                 Success = false,
             };
 
-            if (messages == null)
+            var stringMessages = messages as IDictionary<string, string>;
+            if (stringMessages == null)
             {
                 return apiResult;
             }
 
-            foreach (var message in messages)
+            foreach (var message in stringMessages)
             {
                 apiResult.Messages.Add(new ApiResultMessage()
                 {
-                    Value = message.Value,
+                    Value = message.Key,
                     Type = ApiResultMessageType.Error,
-                    Key = message.Key,
+                    Key = message.Value,
                 });
             }
 
