@@ -1,19 +1,27 @@
 ﻿
+using AppServices.Ingredient;
 using MediatR;
 using MyRecipe.Contracts.Ingredient;
 
 namespace MyRecipe.Handlers.Ingredient
 {
-    public class IngredientAddCommandHandler : IRequestHandler<IngredientAddCommand, IngredientDto>
+    public class IngredientAddCommandHandler : IRequestHandler<IngredientAddCommand, int>
     {
-        public async Task<IngredientDto> Handle(IngredientAddCommand request, CancellationToken cancellationToken)
+        private readonly IIngredientService _ingredientService;
+
+        public IngredientAddCommandHandler(IIngredientService ingredientService)
         {
-            return new IngredientDto()
-            {
-                Id = new Random().Next(),
-                Name = request.Name,
-                Description = request.Description,
-            };
+            _ingredientService = ingredientService;
+        }
+
+        public async Task<int> Handle(IngredientAddCommand request, CancellationToken cancellationToken)
+        {
+            return await _ingredientService.AddAsync(
+                new IngredientDto
+                {
+                    Name = request.Name,
+                    Description = request.Description
+                }, cancellationToken);
         }
     }
 }

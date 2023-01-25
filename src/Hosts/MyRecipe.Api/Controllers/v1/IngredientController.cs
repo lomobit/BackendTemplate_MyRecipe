@@ -21,7 +21,7 @@ namespace MyRecipe.Api.Controllers.v1
 
         [HttpPost]
         [Route("Add")]
-        [ProducesResponseType(typeof(ApiResult<IngredientDto>), statusCode: 200)]
+        [ProducesResponseType(typeof(ApiResult<int>), statusCode: 200)]
         public async Task<IActionResult> Add([FromBody] IngredientAddCommand command, CancellationToken cancellationToken)
         {
             var data = await _mediator.Send(command, cancellationToken);

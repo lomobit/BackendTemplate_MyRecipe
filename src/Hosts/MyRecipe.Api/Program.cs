@@ -1,9 +1,10 @@
+using AppServices.Ingredient;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyRecipe.Handlers;
 using MyRecipe.Infrastructure;
-using System.Reflection;
+using MyRecipe.Infrastructure.Repositories.Ingredient;
 
 // Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
 [assembly: ApiController]
@@ -11,13 +12,14 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddMediatR(typeof(MediatREntrypoint).Assembly);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Добавление DbContext'а
 builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContextOptionsBuilder dbOptions) =>
 {
     const string connectionStringName = "MyRecipeDb";
@@ -28,8 +30,7 @@ builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContext
     var connectionString = configuration.GetConnectionString(connectionStringName);
     if (string.IsNullOrEmpty(connectionString))
     {
-        throw new InvalidOperationException(
-            $"Не найдена строка подключения с именем {connectionStringName}");
+        throw new InvalidOperationException($"Не найдена строка подключения с именем {connectionStringName}");
     }
 
     dbOptions
@@ -38,6 +39,12 @@ builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContext
         .UseNpgsql(connectionString);
 
 }, ServiceLifetime.Singleton);
+
+// Добавление сервисов приложения
+builder.Services.AddScoped<IIngredientService, IngredientService>();
+
+// Добавление репозиториев для работы с базой данных
+builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
 
 var app = builder.Build();
 

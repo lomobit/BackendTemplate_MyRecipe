@@ -23,3 +23,5 @@
 /src/Application/MyRecipe.Handlers/obj
 /src/Application/AppServices/bin
 /src/Application/AppServices/obj
+/src/Infrastructure/MyRecipe.DataAccess/bin
+/src/Infrastructure/MyRecipe.DataAccess/obj
