@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using MyRecipe.Handlers;
 using MyRecipe.Infrastructure;
 using MyRecipe.Infrastructure.Repositories.Ingredient;
+using MyRecipe.Logging.Loggers;
 
 // Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
 [assembly: ApiController]
@@ -24,7 +25,6 @@ builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContext
 {
     const string connectionStringName = "MyRecipeDb";
 
-    var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
     var configuration = sp.GetRequiredService<IConfiguration>();
 
     var connectionString = configuration.GetConnectionString(connectionStringName);
@@ -35,7 +35,6 @@ builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContext
 
     dbOptions
         .UseLazyLoadingProxies()
-        .UseLoggerFactory(loggerFactory)
         .UseNpgsql(connectionString);
 
 }, ServiceLifetime.Singleton);
@@ -45,6 +44,9 @@ builder.Services.AddScoped<IIngredientService, IngredientService>();
 
 // Добавление репозиториев для работы с базой данных
 builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
+
+// Добавление логгеров
+builder.Services.AddScoped<ILogger, DbLogger>();
 
 var app = builder.Build();
 

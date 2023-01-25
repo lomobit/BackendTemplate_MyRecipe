@@ -27,3 +27,5 @@
 /src/Infrastructure/MyRecipe.DataAccess/obj
 /src/Common/MyRecipe.Common/obj
 /src/Common/MyRecipe.Common/bin
+/src/Logging/MyRecipe.Logging/obj
+/src/Logging/MyRecipe.Logging/bin

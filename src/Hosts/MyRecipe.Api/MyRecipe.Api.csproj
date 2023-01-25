@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Application\AppServices\AppServices.csproj" />
     <ProjectReference Include="..\..\Application\MyRecipe.Handlers\MyRecipe.Handlers.csproj" />
     <ProjectReference Include="..\..\Infrastructure\MyRecipe.Infrastructure\MyRecipe.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Logging\MyRecipe.Logging\MyRecipe.Logging.csproj" />
   </ItemGroup>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">

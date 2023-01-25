@@ -12,10 +12,12 @@ namespace MyRecipe.Api.Controllers.v1
     public class IngredientController : BaseApiController
     {
         private readonly IMediator _mediator;
+        private readonly ILogger _logger;
 
-        public IngredientController(IMediator mediator)
+        public IngredientController(IMediator mediator, ILogger logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -23,6 +25,7 @@ namespace MyRecipe.Api.Controllers.v1
         [ProducesResponseType(typeof(ApiResult<int>), statusCode: 200)]
         public async Task<IActionResult> Add([FromBody] IngredientAddCommand command, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Add method executed");
             return await CallApiActionWithResultAsync(async () => await _mediator.Send(command, cancellationToken));
         }
     }
