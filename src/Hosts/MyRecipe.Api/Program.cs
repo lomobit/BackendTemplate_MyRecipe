@@ -25,9 +25,7 @@ builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContext
 {
     const string connectionStringName = "MyRecipeDb";
 
-    var configuration = sp.GetRequiredService<IConfiguration>();
-
-    var connectionString = configuration.GetConnectionString(connectionStringName);
+    var connectionString = sp.GetRequiredService<IConfiguration>().GetConnectionString(connectionStringName);
     if (string.IsNullOrEmpty(connectionString))
     {
         throw new InvalidOperationException($"Не найдена строка подключения с именем {connectionStringName}");
