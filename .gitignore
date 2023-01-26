@@ -29,3 +29,7 @@
 /src/Common/MyRecipe.Common/bin
 /src/Logging/MyRecipe.Logging/obj
 /src/Logging/MyRecipe.Logging/bin
+/src/MyRecipe.ComponentRegistrar/obj
+/src/MyRecipeLogging.Infrastructure/obj
+/src/MyRecipe.ComponentRegistrar/bin
+/src/MyRecipeLogging.Infrastructure/bin

@@ -1,11 +1,7 @@
-using AppServices.Ingredient;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using MyRecipe.ComponentRegistrar;
 using MyRecipe.Handlers;
-using MyRecipe.Infrastructure;
-using MyRecipe.Infrastructure.Repositories.Ingredient;
-using MyRecipe.Logging.Loggers;
 
 // Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
 [assembly: ApiController]
@@ -20,31 +16,8 @@ builder.Services.AddMediatR(typeof(MediatREntrypoint).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Добавление DbContext'а
-builder.Services.AddDbContext<MyRecipeDbContext>((IServiceProvider sp, DbContextOptionsBuilder dbOptions) =>
-{
-    const string connectionStringName = "MyRecipeDb";
-
-    var connectionString = sp.GetRequiredService<IConfiguration>().GetConnectionString(connectionStringName);
-    if (string.IsNullOrEmpty(connectionString))
-    {
-        throw new InvalidOperationException($"Не найдена строка подключения с именем {connectionStringName}");
-    }
-
-    dbOptions
-        .UseLazyLoadingProxies()
-        .UseNpgsql(connectionString);
-
-}, ServiceLifetime.Singleton);
-
-// Добавление сервисов приложения
-builder.Services.AddScoped<IIngredientService, IngredientService>();
-
-// Добавление репозиториев для работы с базой данных
-builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
-
-// Добавление логгеров
-builder.Services.AddScoped<ILogger, DbLogger>();
+// Добавление зависимостей для MyRecipe
+builder.Services.AddMyRecipe();
 
 var app = builder.Build();
 

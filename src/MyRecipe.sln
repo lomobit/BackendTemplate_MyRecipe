@@ -23,17 +23,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.Contracts", "Contr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F52BF040-504C-4F09-9850-5FF87506F757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipe.Handlers", "Application\MyRecipe.Handlers\MyRecipe.Handlers.csproj", "{3B15B442-0380-4A11-8884-9FBD2238065F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.Handlers", "Application\MyRecipe.Handlers\MyRecipe.Handlers.csproj", "{3B15B442-0380-4A11-8884-9FBD2238065F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppServices", "Application\AppServices\AppServices.csproj", "{FE1DBD0D-6D89-488B-9961-655CD56C919B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppServices", "Application\AppServices\AppServices.csproj", "{FE1DBD0D-6D89-488B-9961-655CD56C919B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D8E10566-B843-4825-B0D5-E006464BAD53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipe.Common", "Common\MyRecipe.Common\MyRecipe.Common.csproj", "{392FF990-CD83-4365-8C55-BC0E37B00373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.Common", "Common\MyRecipe.Common\MyRecipe.Common.csproj", "{392FF990-CD83-4365-8C55-BC0E37B00373}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{04AE969F-D264-462C-96D7-A097F153074B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipe.Logging", "Logging\MyRecipe.Logging\MyRecipe.Logging.csproj", "{14DCF74D-3454-499A-A1A2-BF232E98FA34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.Logging", "Logging\MyRecipe.Logging\MyRecipe.Logging.csproj", "{14DCF74D-3454-499A-A1A2-BF232E98FA34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeLogging.Infrastructure", "MyRecipeLogging.Infrastructure\MyRecipeLogging.Infrastructure.csproj", "{6FBBD80B-F5FE-409D-B3D5-4A391991EC47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipe.ComponentRegistrar", "MyRecipe.ComponentRegistrar\MyRecipe.ComponentRegistrar.csproj", "{1FC8566F-F698-4C2F-876A-75316691BC9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,14 @@ Global
 		{14DCF74D-3454-499A-A1A2-BF232E98FA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DCF74D-3454-499A-A1A2-BF232E98FA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14DCF74D-3454-499A-A1A2-BF232E98FA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FBBD80B-F5FE-409D-B3D5-4A391991EC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FBBD80B-F5FE-409D-B3D5-4A391991EC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FBBD80B-F5FE-409D-B3D5-4A391991EC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FBBD80B-F5FE-409D-B3D5-4A391991EC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC8566F-F698-4C2F-876A-75316691BC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC8566F-F698-4C2F-876A-75316691BC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC8566F-F698-4C2F-876A-75316691BC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC8566F-F698-4C2F-876A-75316691BC9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +103,8 @@ Global
 		{FE1DBD0D-6D89-488B-9961-655CD56C919B} = {F52BF040-504C-4F09-9850-5FF87506F757}
 		{392FF990-CD83-4365-8C55-BC0E37B00373} = {D8E10566-B843-4825-B0D5-E006464BAD53}
 		{14DCF74D-3454-499A-A1A2-BF232E98FA34} = {04AE969F-D264-462C-96D7-A097F153074B}
+		{6FBBD80B-F5FE-409D-B3D5-4A391991EC47} = {0042F6BA-5A29-4AEA-9A2C-E1042A80C2CF}
+		{1FC8566F-F698-4C2F-876A-75316691BC9B} = {0042F6BA-5A29-4AEA-9A2C-E1042A80C2CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {156C03F2-72DF-4AE9-9B8A-A00E22065A42}
