@@ -22,8 +22,8 @@ namespace MyRecipe.Infrastructure.Repositories.Ingredient
                 .AnyAsync(x => x.Name == ingredientDto.Name, cancellationToken);
             if (isAlreadyExist)
             {
-                var ex = new ValidationException($"Ингридиент с названием {ingredientDto.Name} уже существует");
-                ex.Data.Add("Ингридиент", $"Ингридиент с названием {ingredientDto.Name} уже существует");
+                var ex = new ValidationException($"Ингредиент с названием {ingredientDto.Name} уже существует");
+                ex.Data.Add("Ингредиент", $"Ингредиент с названием \"{ingredientDto.Name}\" уже существует");
 
                 throw ex;
             }

@@ -8,7 +8,7 @@ namespace MyRecipeLogging.Domain.Configurations
     {
         public void Configure(EntityTypeBuilder<Log> builder)
         {
-            builder.HasNoKey();
+            builder.HasKey(x => x.Id);
         }
     }
 }

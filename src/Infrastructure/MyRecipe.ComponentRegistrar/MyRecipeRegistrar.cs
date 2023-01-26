@@ -1,4 +1,5 @@
 ﻿using AppServices.Ingredient;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,8 @@ using MyRecipe.Infrastructure;
 using MyRecipe.Infrastructure.Repositories.Ingredient;
 using MyRecipe.Logging.Loggers;
 using MyRecipeLogging.Infrastructure;
+using MyRecipeLogging.Infrastructure.MappingProfiles;
+using MyRecipeLogging.Infrastructure.Repositories.Log;
 
 namespace MyRecipe.ComponentRegistrar
 {
@@ -30,6 +33,9 @@ namespace MyRecipe.ComponentRegistrar
 
             // Добавление логгеров
             services.AddMyRecipeLoggers();
+
+            // Добавление автомапперов.
+            services.AddMyRecipeMappers();
 
             return services;
         }
@@ -66,7 +72,11 @@ namespace MyRecipe.ComponentRegistrar
         /// <returns>Коллекция сервисов DI.</returns>
         public static IServiceCollection AddMyRecipeRepositories(this IServiceCollection services)
         {
+            // Репозитории MyRecipeDbContext'а
             services.AddScoped<IIngredientRepository, IngredientRepository>();
+
+            // Репозитории MyRecipeLoggingDbContext'а
+            services.AddScoped<ILogRepository, LogRepository>();
 
             return services;
         }
@@ -79,6 +89,21 @@ namespace MyRecipe.ComponentRegistrar
         public static IServiceCollection AddMyRecipeLoggers(this IServiceCollection services)
         {
             services.AddScoped<ILogger, DbLogger>();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Добавление автомапперов.
+        /// </summary>
+        /// <param name="services">Коллекция сервисов DI.</param>
+        /// <returns>Коллекция сервисов DI.</returns>
+        public static IServiceCollection AddMyRecipeMappers(this IServiceCollection services)
+        {
+            services.AddAutoMapper((IMapperConfigurationExpression cfg) =>
+            {
+                cfg.AddProfile<MyRecipeLoggingMappingProfile>();
+            });
 
             return services;
         }

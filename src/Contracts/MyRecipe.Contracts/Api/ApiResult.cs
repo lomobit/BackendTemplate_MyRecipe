@@ -68,12 +68,14 @@ namespace MyRecipe.Contracts.Api
 
             foreach (var key in messages.Keys)
             {
+#pragma warning disable CS8604 // Possible null reference argument.
                 apiResult.Messages.Add(new ApiResultMessage()
                 {
                     Value = key?.ToString() ?? "Unknown",
                     Type = ApiResultMessageTypeEnum.Error,
                     Key = messages[key]?.ToString() ?? "Unknown",
                 });
+#pragma warning restore CS8604 // Possible null reference argument.
             }
 
             return apiResult;

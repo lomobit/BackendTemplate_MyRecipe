@@ -25,7 +25,7 @@ namespace MyRecipe.Api.Controllers.v1
         [ProducesResponseType(typeof(ApiResult<int>), statusCode: 200)]
         public async Task<IActionResult> Add([FromBody] IngredientAddCommand command, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Add method executed");
+            _logger.LogInformation("Add method start executing...");
             return await CallApiActionWithResultAsync(async () => await _mediator.Send(command, cancellationToken));
         }
     }

@@ -1,5 +1,5 @@
 ﻿
-namespace MyRecipe.Contracts.Enums.Log
+namespace MyRecipeLogging.Contracts.Enums.Log
 {
     public enum LogMessageTypeEnum
     {

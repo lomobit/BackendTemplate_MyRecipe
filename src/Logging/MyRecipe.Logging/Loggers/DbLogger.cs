@@ -1,13 +1,16 @@
 ﻿
 using Microsoft.Extensions.Logging;
+using MyRecipeLogging.Infrastructure.Repositories.Log;
 
 namespace MyRecipe.Logging.Loggers
 {
     public class DbLogger : ILogger, IDisposable
     {
-        public DbLogger()
-        {
+        private readonly ILogRepository _logRepository;
 
+        public DbLogger(ILogRepository logRepository)
+        {
+            _logRepository = logRepository;
         }
 
         public IDisposable? BeginScope<TState>(TState state) where TState : notnull
@@ -22,11 +25,17 @@ namespace MyRecipe.Logging.Loggers
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
         {
-            Console.WriteLine(formatter(state, exception) + Environment.NewLine);
+            _logRepository.AddLog(new MyRecipeLogging.Contracts.Log.LogDto
+            {
+                Message = formatter(state, exception),
+                MessageType = MyRecipeLogging.Contracts.Enums.Log.LogMessageTypeEnum.Information,
+                DateTime= DateTime.UtcNow,
+            });
         }
 
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
         }
     }
 }

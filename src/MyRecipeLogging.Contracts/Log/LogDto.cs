@@ -1,14 +1,9 @@
 ﻿using MyRecipeLogging.Contracts.Enums.Log;
 
-namespace MyRecipeLogging.Domain
+namespace MyRecipeLogging.Contracts.Log
 {
-    public class Log
+    public class LogDto
     {
-        /// <summary>
-        /// Идентификатор лога.
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// Время записи лога.
         /// </summary>
