@@ -6,6 +6,7 @@ using MyRecipe.Handlers;
 // Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
 [assembly: ApiController]
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerGen();
 
 // Добавление зависимостей для MyRecipe
 builder.Services.AddMyRecipe();
+
 
 var app = builder.Build();
 

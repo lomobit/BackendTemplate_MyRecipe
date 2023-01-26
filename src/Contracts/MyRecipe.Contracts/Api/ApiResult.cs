@@ -61,19 +61,18 @@ namespace MyRecipe.Contracts.Api
                 Success = false,
             };
 
-            var stringMessages = messages as IDictionary<string, string>;
-            if (stringMessages == null)
+            if (messages == null)
             {
                 return apiResult;
             }
 
-            foreach (var message in stringMessages)
+            foreach (var key in messages.Keys)
             {
                 apiResult.Messages.Add(new ApiResultMessage()
                 {
-                    Value = message.Key,
+                    Value = key?.ToString() ?? "Unknown",
                     Type = ApiResultMessageType.Error,
-                    Key = message.Value,
+                    Key = messages[key]?.ToString() ?? "Unknown",
                 });
             }
 

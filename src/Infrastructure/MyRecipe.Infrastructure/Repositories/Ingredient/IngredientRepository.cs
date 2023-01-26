@@ -1,5 +1,7 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using MyRecipe.Contracts.Ingredient;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyRecipe.Infrastructure.Repositories.Ingredient
 {
@@ -15,17 +17,36 @@ namespace MyRecipe.Infrastructure.Repositories.Ingredient
         /// <inheritdoc/>
         public async Task<int> AddAsync(IngredientDto ingredientDto, CancellationToken cancellationToken)
         {
-            await _context.Ingredients.AddAsync(new Domain.Ingredient
+            var isAlreadyExist = await _context.Ingredients
+                .AsNoTracking()
+                .AnyAsync(x => x.Name == ingredientDto.Name, cancellationToken);
+            if (isAlreadyExist)
             {
-                Name = ingredientDto.Name,
-                Description = ingredientDto.Description,
-            }, cancellationToken);
-            await _context.SaveChangesAsync();
+                var ex = new ValidationException($"Ингридиент с названием {ingredientDto.Name} уже существует");
+                ex.Data.Add("Ингридиент", $"Ингридиент с названием {ingredientDto.Name} уже существует");
 
-            return _context.Ingredients
+                throw ex;
+            }
+
+            try
+            {
+                await _context.Ingredients.AddAsync(new Domain.Ingredient
+                {
+                    Name = ingredientDto.Name,
+                    Description = ingredientDto.Description,
+                }, cancellationToken);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            finally
+            {
+                _context.ChangeTracker.Clear();
+            }
+
+            return await _context.Ingredients
+                .AsNoTracking()
                 .Where(x => x.Name == ingredientDto.Name)
                 .Select(x => x.Id)
-                .First();
+                .FirstAsync(cancellationToken);
         }
     }
 }

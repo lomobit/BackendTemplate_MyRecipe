@@ -22,10 +22,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\AppServices\AppServices.csproj" />
     <ProjectReference Include="..\..\Application\MyRecipe.Handlers\MyRecipe.Handlers.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MyRecipe.ComponentRegistrar\MyRecipe.ComponentRegistrar.csproj" />
     <ProjectReference Include="..\..\Infrastructure\MyRecipe.Infrastructure\MyRecipe.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Logging\MyRecipe.Logging\MyRecipe.Logging.csproj" />
-    <ProjectReference Include="..\..\MyRecipe.ComponentRegistrar\MyRecipe.ComponentRegistrar.csproj" />
-    <ProjectReference Include="..\..\MyRecipeLogging.Infrastructure\MyRecipeLogging.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MyRecipeLogging.Infrastructure\MyRecipeLogging.Infrastructure.csproj" />
   </ItemGroup>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">

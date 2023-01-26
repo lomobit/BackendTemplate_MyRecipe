@@ -21,7 +21,7 @@ namespace MyRecipe.Api.Controllers.v1
                     StatusCodes.Status400BadRequest,
                     ex.Data);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return Error(
                     default(string),

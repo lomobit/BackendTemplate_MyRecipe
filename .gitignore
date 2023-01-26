@@ -33,3 +33,7 @@
 /src/MyRecipeLogging.Infrastructure/obj
 /src/MyRecipe.ComponentRegistrar/bin
 /src/MyRecipeLogging.Infrastructure/bin
+/src/Domain/MyRecipeLogging.Domain/bin
+/src/Domain/MyRecipeLogging.Domain/obj
+/src/Infrastructure/MyRecipeLogging.Infrastructure/obj
+/src/Infrastructure/MyRecipeLogging.Infrastructure/bin
