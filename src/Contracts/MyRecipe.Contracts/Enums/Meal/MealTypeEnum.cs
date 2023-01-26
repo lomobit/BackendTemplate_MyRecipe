@@ -1,5 +1,4 @@
-﻿
-namespace MyRecipe.Contracts.Enums
+﻿namespace MyRecipe.Contracts.Enums.Meal
 {
     public enum MealTypeEnum
     {

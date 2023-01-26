@@ -1,4 +1,4 @@
-﻿using MyRecipe.Contracts.Enums;
+﻿using MyRecipe.Contracts.Enums.Meal;
 
 namespace MyRecipe.Domain
 {

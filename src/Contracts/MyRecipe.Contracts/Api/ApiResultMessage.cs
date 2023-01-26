@@ -17,7 +17,7 @@ namespace MyRecipe.Contracts.Api
         /// <summary>
         /// Тип
         /// </summary>
-        public ApiResultMessageType Type { get; set; }
+        public ApiResultMessageTypeEnum Type { get; set; }
 
         /// <summary>
         /// Значение сообщения

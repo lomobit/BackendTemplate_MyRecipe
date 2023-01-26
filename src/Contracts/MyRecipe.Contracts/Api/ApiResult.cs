@@ -71,7 +71,7 @@ namespace MyRecipe.Contracts.Api
                 apiResult.Messages.Add(new ApiResultMessage()
                 {
                     Value = key?.ToString() ?? "Unknown",
-                    Type = ApiResultMessageType.Error,
+                    Type = ApiResultMessageTypeEnum.Error,
                     Key = messages[key]?.ToString() ?? "Unknown",
                 });
             }

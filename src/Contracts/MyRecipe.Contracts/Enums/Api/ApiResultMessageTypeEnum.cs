@@ -4,7 +4,7 @@ namespace MyRecipe.Contracts.Enums.Api
     /// <summary>
     /// Тип сообщения.
     /// </summary>
-    public enum ApiResultMessageType
+    public enum ApiResultMessageTypeEnum
     {
         /// <summary>
         /// Не установлен.
