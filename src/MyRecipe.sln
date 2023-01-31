@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.Handlers", "Application\MyRecipe.Handlers\MyRecipe.Handlers.csproj", "{3B15B442-0380-4A11-8884-9FBD2238065F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppServices", "Application\AppServices\AppServices.csproj", "{FE1DBD0D-6D89-488B-9961-655CD56C919B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.AppServices", "Application\MyRecipe.AppServices\MyRecipe.AppServices.csproj", "{FE1DBD0D-6D89-488B-9961-655CD56C919B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D8E10566-B843-4825-B0D5-E006464BAD53}"
 EndProject
@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipe.ComponentRegistrar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeLogging.Domain", "Domain\MyRecipeLogging.Domain\MyRecipeLogging.Domain.csproj", "{692F76F0-CF4B-4DCF-86A4-9D5436C29EB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeLogging.Contracts", "MyRecipeLogging.Contracts\MyRecipeLogging.Contracts.csproj", "{28D3C9E5-B095-46AC-8D3A-68F5DA2C8F3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeLogging.Contracts", "Contracts\MyRecipeLogging.Contracts\MyRecipeLogging.Contracts.csproj", "{28D3C9E5-B095-46AC-8D3A-68F5DA2C8F3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{0600ACBF-D569-4AA5-A047-73E94E79451D}"
 EndProject

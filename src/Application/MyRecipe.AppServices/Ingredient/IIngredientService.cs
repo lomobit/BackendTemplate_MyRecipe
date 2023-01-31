@@ -1,7 +1,7 @@
 ﻿
 using MyRecipe.Contracts.Ingredient;
 
-namespace AppServices.Ingredient
+namespace MyRecipe.AppServices.Ingredient
 {
     public interface IIngredientService
     {

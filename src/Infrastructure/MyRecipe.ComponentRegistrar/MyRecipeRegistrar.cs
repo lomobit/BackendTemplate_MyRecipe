@@ -1,9 +1,9 @@
-﻿using AppServices.Ingredient;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MyRecipe.AppServices.Ingredient;
 using MyRecipe.Infrastructure;
 using MyRecipe.Infrastructure.Repositories.Ingredient;
 using MyRecipe.Logging.Loggers;
