@@ -2,7 +2,7 @@
 using MyRecipe.Contracts.Ingredient;
 using MyRecipe.Infrastructure.Repositories.Ingredient;
 
-namespace AppServices.Ingredient
+namespace MyRecipe.AppServices.Ingredient
 {
     public class IngredientService : IIngredientService
     {

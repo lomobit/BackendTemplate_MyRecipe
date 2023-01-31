@@ -1,6 +1,5 @@
-﻿
-using AppServices.Ingredient;
-using MediatR;
+﻿using MediatR;
+using MyRecipe.AppServices.Ingredient;
 using MyRecipe.Contracts.Ingredient;
 
 namespace MyRecipe.Handlers.Ingredient
