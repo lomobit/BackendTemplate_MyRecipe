@@ -39,3 +39,5 @@
 /src/Infrastructure/MyRecipeLogging.Infrastructure/bin
 /src/MyRecipeLogging.Contracts/bin
 /src/MyRecipeLogging.Contracts/obj
+/src/Contracts/MyRecipeLogging.Contracts/obj
+/src/Contracts/MyRecipeLogging.Contracts/bin
