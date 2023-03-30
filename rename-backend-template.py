@@ -3,7 +3,6 @@
 import io
 import os
 import re
-import ctypes
 import shutil
 
 # Конфигурация
