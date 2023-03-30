@@ -10,7 +10,7 @@
 /src/Domain/MyRecipe.Domain/bin/
 /src/Hosts/MyRecipe.Api/bin/
 /src/Hosts/MyRecipe.WebUI/bin/
-/src/.idea/.idea.MyRecipe/.idea
+/src/.idea
 /src/Infrastructure/MyRecipe.Infrastructure/obj
 /src/Infrastructure/MyRecipe.ComponentRegistrar/obj
 /src/Infrastructure/MyRecipe.Infrastructure/bin

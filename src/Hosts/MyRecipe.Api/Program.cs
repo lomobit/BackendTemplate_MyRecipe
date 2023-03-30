@@ -1,9 +1,9 @@
-using MediatR;
+п»їusing MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MyRecipe.ComponentRegistrar;
 using MyRecipe.Handlers;
 
-// Задаем сборке аттрибут, что все контроллеры - это API-контроллеры
+// Р—Р°РґР°РµРј СЃР±РѕСЂРєРµ Р°С‚С‚СЂРёР±СѓС‚, С‡С‚Рѕ РІСЃРµ РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹ - СЌС‚Рѕ API-РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹
 [assembly: ApiController]
 
 
@@ -17,7 +17,7 @@ builder.Services.AddMediatR(typeof(MediatREntrypoint).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Добавление зависимостей для MyRecipe
+// Р”РѕР±Р°РІР»РµРЅРёРµ Р·Р°РІРёСЃРёРјРѕСЃС‚РµР№ РґР»СЏ MyRecipe
 builder.Services.AddMyRecipe();
 
 
