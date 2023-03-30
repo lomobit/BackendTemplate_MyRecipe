@@ -16,7 +16,7 @@ namespace MyRecipe.ComponentRegistrar
     public static class MyRecipeRegistrar
     {
         /// <summary>
-        /// Добавление зависимостей для MyRecipe.
+        /// Добавление зависимостей для MyRecipe
         /// </summary>
         /// <param name="services">Коллекция сервисов DI.</param>
         /// <returns>Коллекция сервисов DI.</returns>
