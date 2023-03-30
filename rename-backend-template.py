@@ -3,12 +3,14 @@
 import io
 import os
 import re
+import ctypes
 import shutil
 
 # Конфигурация
 ##############################################################
 
 scriptStartPoint: str = "."
+scriptLockFile: str = "lock-rename-backend-template"
 
 # Замена имени переменных, методов, строк подключения и т.д.
 oldProjectName: str = "MyRecipe"
@@ -22,6 +24,7 @@ newProjectNamespace: str = "MyRecipe.FileService"
 filesToIgnore: list = [
 	".dockerignore",
 	"Dockerfile",
+	scriptLockFile,
 	os.path.basename(__file__) # Имя текущего скрипта
 ]
 
@@ -70,9 +73,6 @@ def changeNameInFiles(filesToChange: list):
 			with io.open(file, 'w', encoding="utf-8-sig") as fp:
 				fp.write(resultFileContent)
 		except UnicodeDecodeError as e:
-			# Доработать файлы шаблона (скорее всего просто поменять кодировку), чтобы они безпроблемно открывались и обрабатывались скриптом.
-			print(file)
-			print("Сведения об исключении: ", e)
 			continue
 
 def changeFileNames(filesToChange: list):
@@ -93,7 +93,7 @@ def changeDirectoriesNames(directoriesToChange: list):
 	directory: str = ''
 	for i in range(len(directoriesToChange)-1, -1, -1):
 		directory = directoriesToChange[i]
-		if not os.path.exists(directory):
+		if directory == scriptStartPoint or not os.path.exists(directory):
 			continue
 
 		folderName = os.path.basename(directory)
@@ -104,8 +104,44 @@ def changeDirectoriesNames(directoriesToChange: list):
 		else:
 			os.rename(directory, os.path.join(rootFolder, folderName.replace(oldProjectName, newProjectName)))
 
+def checkFilesAndDirectoriesAvailability(filesToChange: list, directoriesToChange: list) -> bool:
+	try:
+		for file in filesToChange:
+			os.rename(file, file)
+	except PermissionError:
+		print('Ошибка: Файл "' + file + '" занят другим процессом!')
+		return False
+
+	try:
+		for directory in directoriesToChange:
+			if directory == scriptStartPoint:
+				continue
+
+			os.rename(directory, directory)
+	except PermissionError:
+		print('Ошибка: Папка "' + directory + '" занята другим процессом!')
+		return False
+
+	return True
+
+def isAdmin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
 
 def main():
+	if isAdmin():
+		print('Запуск: Необходимо запустить скрипт с правами администратора')
+		return
+
+	if os.path.exists(scriptLockFile):
+		print('Ошибка: переименование уже было произведено. Для повторного переименования проекта необходимо удалить файл "' + scriptLockFile + '".')
+		return
+
+	with io.open(scriptLockFile, 'w', encoding="utf-8-sig") as fp:
+		fp.write("")
+
 	specificDirectoriesToRemove: list = []
 	directoriesToChange: list = []
 	filesToChange: list = []
@@ -123,12 +159,15 @@ def main():
 			
 			filesToChange.append(os.path.join(root, file))
 
-	for dirToRemove in specificDirectoriesToRemove:
-		shutil.rmtree(dirToRemove)
+	if checkFilesAndDirectoriesAvailability(filesToChange, directoriesToChange):
+		for dirToRemove in specificDirectoriesToRemove:
+			shutil.rmtree(dirToRemove)
 
-	changeNameInFiles(filesToChange)
-	changeFileNames(filesToChange)
-	changeDirectoriesNames(directoriesToChange)
+		changeNameInFiles(filesToChange)
+		changeFileNames(filesToChange)
+		changeDirectoriesNames(directoriesToChange)
+	else:
+		os.remove(scriptLockFile)
 
 
 
