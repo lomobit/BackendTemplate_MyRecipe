@@ -15,11 +15,11 @@ gitFolder: str = ".git"
 
 # Замена имени переменных, методов, строк подключения и т.д.
 oldProjectName: str = "MyRecipe"
-newProjectName: str = "FileService"
+newProjectName: str = "" # например "FileService"
 
 # Замена имени названий проектов, вложенных папок и неймспейсов
 oldProjectNamespace: str = "MyRecipe"
-newProjectNamespace: str = "MyRecipe.FileService"
+newProjectNamespace: str = "" # например "MyRecipe.FileService"
 
 # Указываем файлы, которые мы не будем обрабатывать
 filesToIgnore: list = [
@@ -124,15 +124,9 @@ def checkFilesAndDirectoriesAvailability(filesToChange: list, directoriesToChang
 
 	return True
 
-def isAdmin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
-
 def main():
-	if isAdmin():
-		print('Запуск: Необходимо запустить скрипт с правами администратора')
+	if newProjectName == "" or newProjectNamespace == "":
+		print('Ошибка: Необходимо указать внутри этого файла новое имя для внутренних переменных и неймспейсов!')
 		return
 
 	if os.path.exists(scriptLockFile):
