@@ -154,7 +154,7 @@ def main():
 
 		
 		for file in files:
-			if gitFolder in file or file in filesToIgnore:
+			if gitFolder in root or file in filesToIgnore:
 				continue
 			
 			filesToChange.append(os.path.join(root, file))
