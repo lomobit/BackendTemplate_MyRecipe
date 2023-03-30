@@ -11,6 +11,7 @@ import shutil
 
 scriptStartPoint: str = "."
 scriptLockFile: str = "lock-rename-backend-template"
+gitFolder: str = ".git"
 
 # Замена имени переменных, методов, строк подключения и т.д.
 oldProjectName: str = "MyRecipe"
@@ -32,7 +33,6 @@ filesToIgnore: list = [
 directoriesToRemove: list = [
 	"bin",
 	"obj",
-	#".git",
 	".vs",
 	".idea"
 ]
@@ -154,7 +154,7 @@ def main():
 
 		
 		for file in files:
-			if file in filesToIgnore:
+			if gitFolder in file or file in filesToIgnore:
 				continue
 			
 			filesToChange.append(os.path.join(root, file))
